@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرحباً بك في مساعد الطالب</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+        <link rel="stylesheet" href="./CSS/home.css">
+
+</head>
+<body>
+<nav class="navbar">
+  <div class="container nav-container">
+    <a href="index.html" class="logo">🎓 مساعد الطالب</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="القائمة" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">الرئيسية</a></li>
+      <li><a href="courses.html">المواد الدراسية</a></li>
+      <li><a href="schedule.html">الجدول الدراسي</a></li>
+      <li><a href="tasks.html">المهام</a></li>
+      <li><a href="gpa.html">حساب المعدل</a></li>
+      <li><a href="about.html">عن الموقع</a></li>
+    </ul>
+
+  </div>
+</nav>
+
+<main>
+
+  <!-- ===== قسم الترحيب (Hero) ===== -->
+  <section class="hero">
+    <div class="container">
+      <h1>مرحباً بك في مساعد الطالب</h1>
+      <p>موقعك البسيط لتنظيم دراستك وجميع احتياجاتك الجامعية</p>
+
+      <div class="hero-buttons">
+        <a href="courses.html" class="btn btn-primary">
+          <i class="fa-solid fa-book-open"></i> استعرض المواد
+        </a>
+        <a href="tasks.html" class="btn btn-outline">
+          <i class="fa-solid fa-pen-to-square"></i> مهامي
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ماذا يمكنك أن تفعل؟ ===== -->
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">ماذا يمكنك أن تفعل؟</h2>
+
+      <div class="features-grid">
+
+        <a href="courses.html" class="feature-card card-blue">
+          <div class="feature-icon"><i class="fa-solid fa-book-open"></i></div>
+          <h3>المواد الدراسية</h3>
+          <p>تصفح المواد وتفاصيلها</p>
+        </a>
+
+        <a href="schedule.html" class="feature-card card-orange">
+          <div class="feature-icon"><i class="fa-solid fa-calendar-days"></i></div>
+          <h3>الجدول الدراسي</h3>
+          <p>اعرف محاضراتك ومواعيدها</p>
+        </a>
+
+        <a href="tasks.html" class="feature-card card-purple">
+          <div class="feature-icon"><i class="fa-solid fa-list-check"></i></div>
+          <h3>المهام</h3>
+          <p>نظم مهامك وتابعها</p>
+        </a>
+
+        <a href="gpa.html" class="feature-card card-green">
+          <div class="feature-icon"><i class="fa-solid fa-calculator"></i></div>
+          <h3>حساب المعدل</h3>
+          <p>احسب معدلك بسهولة</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-container">
+    <p class="copyright">© 2026 مساعد الطالب - جميع الحقوق محفوظة</p>
+    <div class="social-links">
+    <a href="https://www.instagram.com/mohammed__qandel?stkn=MTZ2YTNodWpycTI4Mw==" aria-label="instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.facebook.com/me/" aria-label="facebook"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://x.com/Mohamed24745242" aria-label="X"><i class="fa-solid fa-x"></i></a>
+    <a href="https://wa.me/972567876970" aria-label="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+  </div>
+</footer>
+<script src="./JS/script.js"></script>
+</body>
+</html>

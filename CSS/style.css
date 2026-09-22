@@ -1,0 +1,444 @@
+/* =====================================================
+   style.css — الملف المشترك (بينربط بكل صفحات الموقع)
+   فيه: المتغيرات، الريسيت، الناف بار، الفوتر، الأزرار،
+        هيكل الصفحات الداخلية، النافذة المنبثقة، وتجاوبهم
+   ===================================================== */
+
+
+/* ========== المتغيرات ========== */
+:root {
+  --primary: #0D47A1;      /* الأزرق الأساسي */
+  --secondary: #1565C0;    /* الأزرق الثانوي */
+  --navy: #10295c;         /* الكحلي تبع الناف بار والفوتر */
+  --bg-light: #E3F2FD;     /* خلفية فاتحة */
+  --card-bg: #F5F7FA;      /* خلفية البطاقات */
+  --success: #4CAF50;      /* أخضر */
+  --warning: #FF9800;      /* برتقالي */
+  --danger: #F44336;       /* أحمر */
+  --white: #FFFFFF;        /* أبيض */
+  --text: #333333;         /* لون النص */
+  --text-muted: #6B7280;   /* رمادي للنصوص الثانوية */
+
+  --font-heading: 'Cairo', sans-serif;   /* خط العناوين */
+  --font-body: 'Tajawal', sans-serif;    /* خط النصوص */
+
+  --container: 1200px;     /* أقصى عرض للمحتوى */
+}
+
+
+/* ========== ألوان الكروت (مشتركة: الرئيسية + المواد + النوافذ) ========== */
+/* كل كلاس بيعرّف متغيرين محليين: --c الغامق و--c-light الفاتح */
+.card-blue   { --c: var(--secondary); --c-light: #E3F2FD; }
+.card-orange { --c: var(--warning);   --c-light: #FFF3E0; }
+.card-purple { --c: #7E57C2;          --c-light: #EDE7F6; }
+.card-green  { --c: var(--success);   --c-light: #E8F5E9; }
+.card-red    { --c: var(--danger);    --c-light: #FDECEA; }
+
+
+/* ========== الريسيت والأساسيات ========== */
+* {
+  margin: 0;                /* بنلغي الهوامش الافتراضية */
+  padding: 0;               /* وبنلغي الـ padding الافتراضي */
+  box-sizing: border-box;   /* الـ padding يدخل ضمن العرض */
+}
+
+body {
+  font-family: var(--font-body);  /* خط الموقع */
+  color: var(--text);             /* لون النص */
+  line-height: 1.7;               /* المسافة بين الأسطر */
+  min-height: 100vh;              /* الصفحة بارتفاع الشاشة على الأقل */
+  display: flex;                  /* فليكس */
+  flex-direction: column;         /* بشكل عمودي عشان الفوتر ينزل لتحت */
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);  /* خط Cairo للعناوين */
+  color: var(--primary);             /* لون أزرق */
+}
+
+a {
+  text-decoration: none;    /* بنشيل الخط اللي تحت الروابط */
+  color: inherit;           /* الرابط ياخد لون اللي حواليه */
+}
+
+ul {
+  list-style: none;         /* بنشيل النقاط من القوائم */
+}
+
+img {
+  max-width: 100%;          /* الصورة ما بتطلع برا الشاشة (كانت معطّلة عندك، رجّعتها لأن صفحة "عن الموقع" فيها صورة) */
+  display: block;           /* بنشيل الفراغ الصغير تحت الصورة */
+}
+
+.container {
+  width: 100%;                    /* عرض كامل */
+  max-width: var(--container);    /* بس ما يزيد عن 1200px */
+  margin-inline: auto;            /* بنوسّط الحاوية */
+  padding-inline: 16px;           /* مسافة عالجنبين */
+}
+
+main {
+  flex: 1;                        /* المحتوى ياخد المساحة الفاضية */
+}
+
+[hidden] {
+  display: none !important;       /* أي عنصر عليه hidden يختفي فعلاً (بدونها display: flex يلغي hidden) */
+}
+
+
+/* ========== الناف بار ========== */
+.navbar {
+  background: var(--navy);                  /* لون خلفية الناف بار (الكحلي) */
+  position: sticky;                         /* بيضل ظاهر فوق وأنت بتنزل بالصفحة */
+  top: 0;                                   /* بيلزق بأعلى الشاشة بالظبط (كانت 1% وبتعمل فراغ فوقه) */
+  z-index: 1000;                            /* بيكون فوق أي عنصر تاني */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); /* ظل تحته */
+}
+
+.nav-container {
+  display: flex;                            /* بيرتب اللوجو والروابط جنب بعض */
+  align-items: center;                      /* بيوسّطهم عمودياً */
+  justify-content: space-between;           /* اللوجو بطرف والروابط بالطرف التاني */
+  min-height: 60px;                         /* أقل ارتفاع للناف بار */
+}
+
+.logo {
+  font-family: var(--font-heading);         /* خط Cairo للوجو */
+  font-size: 1.3rem;                        /* حجم خط اللوجو */
+  font-weight: 700;                         /* خط عريض */
+  color: var(--white);                      /* لون أبيض */
+  white-space: nowrap;                      /* يمنع اللوجو ينكسر لسطرين */
+}
+
+.nav-links {
+  display: flex;                            /* الروابط بصف أفقي */
+  align-items: center;                      /* بنص الارتفاع */
+  gap: 10px;                                /* مسافة بين كل رابط والتاني */
+}
+
+.nav-links a {
+  display: block;                           /* بيخلي الـ padding يشتغل صح ويكبّر مساحة الضغط */
+  padding: 11px 16px;                       /* مسافة داخلية: 11 فوق وتحت، 16 يمين ويسار */
+  border-radius: 11px;                      /* زوايا دائرية (شكل الحبة) */
+  font-size: 0.95rem;                       /* حجم خط الروابط */
+  font-weight: 500;                         /* سماكة متوسطة */
+  color: rgba(255, 255, 255, 0.85);         /* أبيض شبه شفاف للروابط العادية */
+  transition: background 0.50s ease, color 0.0s ease; /* حركة ناعمة عند تغيّر اللون */
+}
+
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.12);    /* خلفية فاتحة خفيفة لما تحط الماوس */
+  color: var(--white);                      /* النص يصير أبيض كامل */
+}
+
+.nav-links a.active {
+  background: var(--secondary);             /* خلفية زرقا لرابط الصفحة الحالية */
+  color: var(--white);                      /* نص أبيض */
+}
+
+/* زر الهامبرغر (الثلاث شرطات): مخفي على الشاشات الكبيرة وبيظهر على الجوال */
+.menu-toggle {
+  display: none;                            /* مخفي افتراضياً */
+  flex-direction: column;                   /* الخطوط الثلاثة فوق بعض */
+  justify-content: center;                  /* بنص الزر */
+  gap: 5px;                                 /* مسافة بين الخطوط */
+  width: 42px;                              /* عرض الزر */
+  height: 42px;                             /* ارتفاع الزر */
+  padding: 8px;                             /* مسافة داخلية */
+  background: transparent;                  /* بدون خلفية */
+  border: none;                             /* بدون إطار */
+  cursor: pointer;                          /* شكل اليد عند المرور */
+}
+
+.menu-toggle span {
+  display: block;                           /* عشان ياخد عرض وارتفاع */
+  width: 100%;                              /* الخط بعرض الزر كله */
+  height: 3px;                              /* سماكة الخط */
+  border-radius: 2px;                       /* أطراف دائرية شوي */
+  background: var(--white);                 /* لون أبيض */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* حركة ناعمة عند التحول لـ ✕ */
+}
+
+/* تحويل الهامبرغر إلى ✕ لما القائمة تنفتح */
+.menu-toggle.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);    /* الخط الأول ينزل ويلف */
+}
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;                                  /* الخط اللي بالنص بيختفي */
+}
+.menu-toggle.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);  /* الخط الثالث يطلع ويلف عكسه فيصير ✕ */
+}
+
+
+/* ========== الأزرار (مشتركة بكل الصفحات) ========== */
+.btn {
+  display: inline-flex;                 /* الأيقونة والنص جنب بعض */
+  align-items: center;                  /* بنفس الارتفاع */
+  justify-content: center;              /* بنص الزر */
+  gap: 8px;                             /* مسافة بين الأيقونة والنص */
+  padding: 10px 24px;                   /* مسافة داخلية */
+  border: 2px solid transparent;        /* إطار شفاف (عشان الزر الثاني ياخد إطار بدون ما يتغير الحجم) */
+  border-radius: 8px;                   /* زوايا دائرية */
+  font-family: var(--font-body);        /* خط الموقع (الأزرار ما بترث الخط تلقائياً) */
+  font-size: 1rem;                      /* حجم الخط */
+  font-weight: 700;                     /* خط عريض */
+  cursor: pointer;                      /* شكل اليد */
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease; /* حركة ناعمة */
+}
+
+.btn-primary {
+  background: var(--secondary);         /* زر أزرق مليان */
+  color: var(--white);                  /* نص أبيض */
+}
+
+.btn-primary:hover {
+  background: var(--primary);           /* أزرق أغمق عند المرور */
+  transform: translateY(-2px);          /* يطلع 2px لفوق */
+}
+
+.btn-outline {
+  background: transparent;              /* بدون خلفية */
+  border-color: var(--white);           /* إطار أبيض */
+  color: var(--white);                  /* نص أبيض */
+}
+
+.btn-outline:hover {
+  background: var(--white);             /* الخلفية تصير بيضا */
+  color: var(--navy);                   /* والنص كحلي */
+  transform: translateY(-2px);          /* يطلع 2px لفوق */
+}
+
+/* زر صغير */
+.btn-sm {
+  padding: 6px 16px;                    /* مسافة داخلية أصغر */
+  font-size: 0.9rem;                    /* خط أصغر */
+}
+
+/* زر أيقونة دائري (مستخدم بصفحة المعدل لحذف صف، وبأي صفحة ثانية بالمستقبل) */
+.btn-icon {
+  display: flex;                        /* لتوسيط الأيقونة */
+  align-items: center;                  /* توسيط عمودي */
+  justify-content: center;              /* توسيط أفقي */
+  width: 34px;                          /* عرض الزر */
+  height: 34px;                         /* ارتفاع الزر */
+  border: none;                         /* بدون إطار */
+  border-radius: 50%;                   /* دائري */
+  background: transparent;              /* بدون خلفية */
+  color: var(--text-muted);             /* رمادي */
+  cursor: pointer;                      /* شكل اليد */
+  transition: background 0.2s ease, color 0.2s ease; /* حركة ناعمة */
+}
+
+.btn-icon:hover {
+  background: rgba(244, 67, 54, 0.12);  /* خلفية حمرا خفيفة */
+  color: var(--danger);                 /* أيقونة حمرا */
+}
+
+/* حاوية أضيق للصفحات اللي محتواها نصوص/فورم (حساب المعدل، عن الموقع) */
+.container-narrow {
+  max-width: 800px;                     /* عرض أضيق من الحاوية العادية (1200px) */
+}
+
+
+/* ========== هيكل الصفحات الداخلية (مشترك) ========== */
+.page {
+  padding: 40px 0 20px;                 /* مسافة فوق وتحت محتوى الصفحة */
+}
+
+.page-header {
+  text-align: center;                   /* توسيط العنوان والوصف */
+  margin-bottom: 30px;                  /* مسافة قبل المحتوى */
+}
+
+.page-header h1 {
+  font-size: clamp(1.5rem, 4vw, 2rem);  /* حجم متجاوب للعنوان */
+  color: var(--navy);                   /* كحلي */
+}
+
+.page-header h1 i {
+  color: var(--secondary);              /* الأيقونة زرقا */
+  margin-inline-end: 8px;               /* مسافة بين الأيقونة والنص (بالـ RTL بتصير عاليسار الأيقونة) */
+}
+
+.page-header p {
+  color: var(--text-muted);             /* الوصف رمادي */
+  font-size: 0.95rem;                   /* خط أصغر */
+}
+
+
+/* ========== النافذة المنبثقة (Modal): الأساس المشترك ========== */
+.modal {
+  position: fixed;                      /* ثابتة فوق الصفحة كلها */
+  inset: 0;                             /* تغطي الشاشة كاملة (top, right, bottom, left = 0) */
+  display: flex;                        /* عشان نوسّط الصندوق */
+  align-items: center;                  /* توسيط عمودي */
+  justify-content: center;              /* توسيط أفقي */
+  padding: 16px;                        /* مسافة من حواف الشاشة (مهم للجوال) */
+  background: rgba(0, 0, 0, 0.55);      /* خلفية سودا شبه شفافة */
+  opacity: 0;                           /* شفافة تماماً (مخفية) */
+  visibility: hidden;                   /* مخفية ومش قابلة للضغط أو التركيز */
+  transition: opacity 0.25s ease, visibility 0.25s ease; /* ظهور واختفاء ناعم */
+  z-index: 2000;                        /* فوق الناف بار (اللي z-index تبعه 1000) */
+}
+
+.modal.open {
+  opacity: 1;                           /* تظهر */
+  visibility: visible;                  /* وتصير قابلة للضغط */
+}
+
+.modal-box {
+  position: relative;                   /* عشان زر الإغلاق يتثبت جواله */
+  width: 100%;                          /* بعرض المتاح */
+  max-width: 480px;                     /* بس ما تزيد عن 480px */
+  max-height: 90vh;                     /* ما تزيد عن 90% من ارتفاع الشاشة */
+  overflow-y: auto;                     /* لو المحتوى طويل يطلع سكرول جواها */
+  padding: 28px 24px 24px;              /* مسافة داخلية */
+  background: var(--white);             /* خلفية بيضا */
+  border-top: 6px solid var(--c);       /* شريط ملوّن فوق حسب لون المادة (لازم كلاس card-* على الصندوق) */
+  border-radius: 12px;                  /* زوايا دائرية */
+  transform: translateY(20px) scale(0.97); /* وضعها قبل الظهور: نازلة شوي ومصغّرة */
+  transition: transform 0.25s ease;     /* حركة ناعمة */
+}
+
+.modal.open .modal-box {
+  transform: none;                      /* لما تنفتح ترجع لمكانها وحجمها الطبيعي */
+}
+
+.modal-close {
+  position: absolute;                   /* بنثبّته بزاوية الصندوق */
+  top: 10px;                            /* 10px من فوق */
+  inset-inline-end: 12px;               /* 12px من نهاية السطر (يسار بالـ RTL) */
+  width: 34px;                          /* عرض الزر */
+  height: 34px;                         /* ارتفاع الزر */
+  border: none;                         /* بدون إطار */
+  border-radius: 50%;                   /* دائري */
+  background: transparent;              /* بدون خلفية */
+  font-size: 1.8rem;                    /* حجم علامة ✕ */
+  line-height: 1;                       /* ما نزيد ارتفاع السطر */
+  color: var(--text-muted);             /* رمادي */
+  cursor: pointer;                      /* شكل اليد */
+  transition: background 0.2s ease, color 0.2s ease; /* حركة ناعمة */
+}
+
+.modal-close:hover {
+  background: var(--card-bg);           /* خلفية رمادية فاتحة */
+  color: var(--danger);                 /* ✕ حمرا */
+}
+
+/* منع سكرول الصفحة الخلفية لما النافذة مفتوحة */
+body.no-scroll {
+  overflow: hidden;                     /* بيثبّت الصفحة ورا النافذة */
+}
+
+
+/* ========== الفوتر ========== */
+.footer {
+  background: var(--navy);                  /* نفس كحلي الناف بار */
+  color: rgba(255, 255, 255, 0.85);         /* نص أبيض شبه شفاف */
+  margin-top: auto;                         /* يدفع الفوتر لآخر الصفحة (لأن body فليكس عمودي) */
+  padding: 18px 0;                          /* مسافة داخلية فوق وتحت */
+}
+
+.footer-container {
+  position: relative;                       /* عشان نثبّت الأيقونات جواله بـ absolute */
+  display: flex;                            /* فليكس لتوسيط النص */
+  align-items: center;                      /* توسيط عمودي */
+  justify-content: center;                  /* توسيط أفقي: نص الحقوق بالنص */
+  min-height: 32px;                         /* ارتفاع أدنى بحجم الأيقونات */
+}
+
+.copyright {
+  font-size: 0.85rem;                       /* خط صغير زي الصورة */
+  text-align: center;                       /* النص بالنص */
+}
+
+.social-links {
+  position: absolute;                       /* بيطلع برا تدفق الفليكس فيضل النص بالنص فعلاً */
+  inset-inline-end: 16px;                   /* بنهاية السطر: يسار بالـ RTL، زي الصورة */
+  display: flex;                            /* الأيقونات جنب بعض */
+  gap: 10px;                                /* مسافة بين الأيقونات */
+}
+
+.social-links a {
+  display: flex;                            /* لتوسيط الأيقونة جوّا الدايرة */
+  align-items: center;                      /* توسيط عمودي */
+  justify-content: center;                  /* توسيط أفقي */
+  width: 32px;                              /* عرض الدايرة */
+  height: 32px;                             /* ارتفاع الدايرة (نفس العرض = دايرة كاملة) */
+  border-radius: 50%;                       /* بيحولها لدايرة */
+  color: var(--white);                      /* الأيقونة بيضا */
+  font-size: 1.1rem;                        /* حجم الأيقونة */
+  transition: background 0.25s ease, transform 0.25s ease; /* حركة ناعمة */
+}
+
+.social-links a:hover {
+  background: var(--secondary);             /* خلفية زرقا عند المرور */
+  transform: translateY(-2px);              /* الأيقونة تطلع 2px لفوق */
+}
+
+
+/* =====================================================
+   التجاوب (الجزء المشترك: الناف بار والفوتر)
+   لازم يكون بعد القواعد الأساسية فوق
+   ===================================================== */
+
+/* ===== تابلت: بنصغّر الروابط عشان تتسع بسطر واحد ===== */
+@media (max-width: 900px) {
+  .nav-links a {
+    padding: 8px 10px;                 /* بنصغّر المسافة الداخلية */
+    font-size: 0.88rem;                /* وبنصغّر الخط */
+  }
+}
+
+/* ===== جوال: الناف بار بقائمة هامبرغر ===== */
+@media (max-width: 768px) {          /* لما عرض الشاشة 768px أو أقل */
+  .nav-container {
+    flex-wrap: wrap;                 /* بيسمح للقائمة تنزل لسطر جديد تحت اللوجو */
+  }
+
+  .menu-toggle {
+    display: flex;                   /* بنظهر زر الهامبرغر */
+  }
+
+  .nav-links {
+    flex-direction: column;          /* الروابط تحت بعض */
+    align-items: stretch;            /* كل رابط ياخد العرض كامل */
+    width: 100%;                     /* القائمة بعرض الشاشة */
+    gap: 0;                          /* بنلغي المسافة بين الروابط */
+    max-height: 0;                   /* القائمة مسكّرة (ارتفاعها صفر) */
+    overflow: hidden;                /* بنخفي اللي طالع برا الارتفاع */
+    transition: max-height 0.35s ease; /* حركة فتح وإغلاق ناعمة */
+  }
+
+  .nav-links.open {
+    max-height: 400px;               /* لما تنفتح: رقم أكبر من ارتفاعها الحقيقي */
+    padding-bottom: 10px;            /* مسافة بآخر القائمة */
+  }
+
+  .nav-links a {
+    padding: 12px 8px;               /* مساحة ضغط أكبر للإصبع */
+    border-radius: 0;                /* بنلغي الزوايا الدائرية */
+    font-size: 1rem;                 /* خط أكبر شوي */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12); /* خط فاصل بين الروابط */
+  }
+}
+
+/* ===== الفوتر على الجوال ===== */
+@media (max-width: 600px) {
+  .footer-container {
+    flex-direction: column;          /* النص والأيقونات تحت بعض */
+    gap: 10px;                       /* مسافة بينهم */
+  }
+
+  .social-links {
+    position: static;                /* بنرجّعها لتدفق الصفحة العادي عشان ما تتداخل مع النص */
+  }
+}
+
+/* ===== جوال صغير ===== */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.1rem;               /* بنصغّر اللوجو */
+  }
+}

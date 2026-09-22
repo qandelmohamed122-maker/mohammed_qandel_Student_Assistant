@@ -1,0 +1,129 @@
+/* =====================================================
+   home.css — خاص بالصفحة الرئيسية (index.html) فقط
+   بيتحمّل بعد style.css
+   ===================================================== */
+
+
+/* ========== قسم الترحيب (Hero) ========== */
+.hero {
+  background:
+    linear-gradient(rgba(16, 41, 92, 0.75), rgba(16, 41, 92, 0.75)), /* طبقة كحلي شبه شفافة فوق الصورة عشان النص يبين */
+    url("../images/patrik-michalicka-r3iAqHb7JWs-unsplash (1).jpg");  /* صورة الخلفية (../ يعني اطلع من مجلد css) */
+  background-color: var(--navy);        /* لون احتياطي لو الصورة ما انحملت */
+  background-size: cover;               /* الصورة تغطي المساحة كلها بدون ما تتشوه */
+  background-position: center;          /* بنركّز على نص الصورة */
+  color: var(--white);                  /* لون النص أبيض */
+  text-align: center;                   /* توسيط النص */
+  padding: 90px 0;                      /* مسافة فوق وتحت (هيك بنتحكم بارتفاع القسم) */
+}
+
+.hero h1 {
+  color: var(--white);                  /* بنلغي الأزرق العام للعناوين */
+  font-size: clamp(1.8rem, 5vw, 2.8rem); /* حجم متجاوب: بين 1.8rem و2.8rem حسب عرض الشاشة */
+  margin-bottom: 12px;                  /* مسافة تحت العنوان */
+}
+
+.hero p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem); /* حجم متجاوب للفقرة */
+  color: rgba(255, 255, 255, 0.9);      /* أبيض خفيف */
+  margin-bottom: 28px;                  /* مسافة قبل الأزرار */
+}
+
+.hero-buttons {
+  display: flex;                        /* الزرين جنب بعض */
+  justify-content: center;              /* بنص الصفحة */
+  flex-wrap: wrap;                      /* لو ما اتسعوا ينزل واحد تحت التاني */
+  gap: 14px;                            /* مسافة بينهم */
+}
+
+
+/* ========== قسم "ماذا يمكنك أن تفعل؟" ========== */
+.features {
+  padding: 50px 0;                      /* مسافة فوق وتحت القسم */
+}
+
+.section-title {
+  text-align: center;                   /* توسيط العنوان */
+  color: var(--navy);                   /* كحلي */
+  font-size: 1.6rem;                    /* حجم الخط */
+  margin-bottom: 30px;                  /* مسافة قبل الكروت */
+}
+
+.features-grid {
+  display: grid;                        /* نظام الشبكة */
+  grid-template-columns: repeat(4, 1fr); /* 4 أعمدة متساوية */
+  gap: 20px;                            /* مسافة بين الكروت */
+}
+
+.feature-card {
+  display: block;                       /* الرابط يصير كتلة وياخد العرض كامل */
+  padding: 28px 16px;                   /* مسافة داخلية */
+  background: var(--c-light);           /* اللون الفاتح الخاص بكل كرت (من كلاس card-* بالملف المشترك) */
+  border: 1px solid rgba(0, 0, 0, 0.05); /* إطار خفيف جداً */
+  border-radius: 12px;                  /* زوايا دائرية */
+  text-align: center;                   /* كل شي بالنص */
+  transition: transform 0.25s ease, box-shadow 0.25s ease; /* حركة ناعمة */
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);          /* الكرت يطلع 6px لفوق */
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12); /* ظل أوضح */
+}
+
+.feature-icon {
+  display: flex;                        /* لتوسيط الأيقونة */
+  align-items: center;                  /* توسيط عمودي */
+  justify-content: center;              /* توسيط أفقي */
+  width: 56px;                          /* عرض المربع */
+  height: 56px;                         /* ارتفاع المربع */
+  margin: 0 auto 14px;                  /* بنوسّطه أفقياً + مسافة تحته */
+  border-radius: 12px;                  /* زوايا دائرية */
+  background: var(--c);                 /* اللون الغامق الخاص بكل كرت */
+  color: var(--white);                  /* الأيقونة بيضا */
+  font-size: 1.5rem;                    /* حجم الأيقونة */
+}
+
+.feature-card h3 {
+  font-size: 1.05rem;                   /* حجم عنوان الكرت */
+  color: var(--navy);                   /* كحلي */
+  margin-bottom: 4px;                   /* مسافة صغيرة تحته */
+}
+
+.feature-card p {
+  font-size: 0.9rem;                    /* خط أصغر للوصف */
+  color: var(--text-muted);             /* رمادي */
+}
+
+
+/* =====================================================
+   التجاوب (لازم بعد القواعد الأساسية فوق)
+   ===================================================== */
+
+/* ===== تابلت: عمودين ===== */
+@media (max-width: 900px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr); /* بدل 4 أعمدة صار عمودين */
+  }
+}
+
+/* ===== جوال ===== */
+@media (max-width: 768px) {
+  .hero {
+    padding: 70px 0;                    /* بنصغّر ارتفاع الـ Hero */
+  }
+}
+
+/* ===== جوال صغير: عمود واحد ===== */
+@media (max-width: 480px) {
+  .features-grid {
+    grid-template-columns: 1fr;         /* كرت واحد بكل سطر */
+  }
+
+  .hero {
+    padding: 56px 0;                    /* ارتفاع أصغر */
+  }
+
+  .hero-buttons .btn {
+    width: 100%;                        /* الأزرار بعرض الشاشة (أسهل بالضغط) */
+  }
+}

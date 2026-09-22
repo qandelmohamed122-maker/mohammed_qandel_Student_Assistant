@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حاسبة المعدل - مساعد الطالب</title>
+
+  <!-- الخطوط -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- الأيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- الستايل: المشترك أول، وبعده ملف الصفحة -->
+  <link rel="stylesheet" href="./CSS/style.css">
+  <link rel="stylesheet" href="./CSS/gpa.css">
+</head>
+<body>
+
+  <!-- ===== الناف بار ===== -->
+  <nav class="navbar">
+    <div class="container nav-container">
+
+      <a href="index.html" class="logo">🎓 مساعد الطالب</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="القائمة" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="courses.html">المواد الدراسية</a></li>
+        <li><a href="schedule.html">الجدول الدراسي</a></li>
+        <li><a href="tasks.html">المهام</a></li>
+        <li><a href="gpa.html" class="active">حساب المعدل</a></li>
+        <li><a href="about.html">عن الموقع</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!-- ===== المحتوى ===== -->
+  <main>
+    <section class="page">
+      <div class="container container-narrow">
+
+        <header class="page-header">
+          <h1><i class="fa-solid fa-calculator"></i> حاسبة المعدل</h1>
+          <p>أدخل درجاتك وعدد ساعات كل مادة لحساب معدلك الفصلي</p>
+        </header>
+
+        <!-- الفورم: الجدول + الأزرار (novalidate عشان نعرض رسائلنا نحن مش رسائل المتصفح) -->
+        <form class="gpa-card" id="gpaForm" novalidate>
+
+          <table class="gpa-table">
+            <thead>
+              <tr>
+                <th>المادة</th>
+                <th>العلامة</th>
+                <th>عدد الساعات</th>
+                <th aria-label="حذف"></th>
+              </tr>
+            </thead>
+            <tbody id="gpaBody"></tbody>
+          </table>
+
+          <div class="gpa-actions">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa-solid fa-calculator"></i> احسب المعدل
+            </button>
+            <button type="button" class="btn btn-light" id="addRowBtn">
+              <i class="fa-solid fa-plus"></i> إضافة مادة
+            </button>
+          </div>
+
+          <!-- رسالة الخطأ -->
+          <p class="gpa-message" id="gpaMessage" role="alert" hidden></p>
+        </form>
+
+        <!-- النتيجة -->
+        <div class="gpa-result" id="gpaResult" hidden>
+          <i class="fa-solid fa-trophy"></i>
+          <p class="gpa-result-label">المعدل الفصلي</p>
+          <p class="gpa-result-value" id="gpaValue">0.00</p>
+          <p class="gpa-result-note">(من 4.00)</p>
+          <p class="gpa-result-note">مجموع الساعات: <span id="gpaHours">0</span></p>
+        </div>
+
+        <!-- سلم العلامات المستخدم بالحساب -->
+        <details class="scale-box">
+          <summary>سلم العلامات المستخدم في الحساب</summary>
+          <ul id="scaleList"></ul>
+        </details>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== الفوتر ===== -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <p class="copyright">© 2026 مساعد الطالب - جميع الحقوق محفوظة</p>
+
+      <div class="social-links">
+    <a href="https://www.instagram.com/mohammed__qandel?stkn=MTZ2YTNodWpycTI4Mw==" aria-label="instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.facebook.com/me/" aria-label="facebook"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://x.com/Mohamed24745242" aria-label="X"><i class="fa-solid fa-x"></i></a>
+    <a href="https://wa.me/972567876970" aria-label="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="./JS/script.js"></script>
+  <script src="./JS/gpa.js"></script>
+
+</body>
+</html>

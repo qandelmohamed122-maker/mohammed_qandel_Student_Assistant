@@ -1,0 +1,202 @@
+/* =====================================================
+   tasks.css — خاص بصفحة المهام (tasks.html) فقط
+   بيتحمّل بعد style.css
+   الملف مستقل: ما بيعتمد على .btn-icon ولا .container-narrow
+   (بيعتمد بس على المتغيرات و .btn و .page-header من style.css)
+   ===================================================== */
+
+
+/* ========== عرض الصفحة ========== */
+.tasks-wrap {
+  max-width: 800px;                     /* حاوية أضيق من الباقي: القوائم أوضح على عرض أقل */
+}
+
+
+/* ========== فورم الإضافة ========== */
+.task-form {
+  display: flex;                        /* الحقل والزر بسطر */
+  gap: 10px;                            /* مسافة بينهم */
+  margin-bottom: 20px;                  /* مسافة قبل الفلاتر */
+}
+
+.task-form input {
+  flex: 1;                              /* الحقل ياخد كل المساحة الفاضية */
+  min-width: 0;                         /* بيسمح للحقل يصغر (بدونها ممكن يدفع الزر برا الشاشة) */
+  padding: 10px 14px;                   /* مسافة داخلية */
+  border: 1px solid #d0d7e2;            /* إطار رمادي */
+  border-radius: 8px;                   /* زوايا دائرية */
+  background: var(--white);             /* خلفية بيضا */
+  font-family: var(--font-body);        /* خط الموقع */
+  font-size: 1rem;                      /* 16px (يمنع الزوم على آيفون) */
+}
+
+.task-form input:focus {
+  outline: none;                        /* بنشيل الإطار الافتراضي */
+  border-color: var(--secondary);       /* إطار أزرق */
+  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.15); /* هالة زرقا خفيفة */
+}
+
+
+/* ========== أزرار الفلترة ========== */
+.filters {
+  display: flex;                        /* الأزرار بسطر */
+  flex-wrap: wrap;                      /* تنزل لسطر جديد لو ما اتسعت */
+  gap: 10px;                            /* مسافة بينهم */
+  margin-bottom: 16px;                  /* مسافة قبل القائمة */
+}
+
+.filter-btn {
+  padding: 8px 22px;                    /* مسافة داخلية */
+  border: 1px solid #d9dee5;            /* إطار رمادي فاتح */
+  border-radius: 8px;                   /* زوايا دائرية */
+  background: var(--white);             /* خلفية بيضا */
+  color: var(--navy);                   /* نص كحلي */
+  font-family: var(--font-body);        /* الأزرار ما بترث الخط تلقائياً */
+  font-size: 0.95rem;                   /* حجم الخط */
+  font-weight: 700;                     /* عريض */
+  cursor: pointer;                      /* شكل اليد */
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease; /* حركة ناعمة */
+}
+
+.filter-btn:hover {
+  background: var(--bg-light);          /* أزرق فاتح عند المرور */
+}
+
+.filter-btn.active {
+  background: var(--secondary);         /* الفلتر المختار: خلفية زرقا */
+  border-color: var(--secondary);       /* إطار أزرق */
+  color: var(--white);                  /* نص أبيض */
+}
+
+
+/* ========== كرت القائمة ========== */
+.task-card {
+  background: var(--white);             /* خلفية بيضا */
+  border: 1px solid #e3e8ef;            /* إطار خفيف */
+  border-radius: 12px;                  /* زوايا دائرية */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* ظل خفيف */
+  overflow: hidden;                     /* عشان تظليل الصف عند المرور ما يطلع برا الزوايا الدائرية */
+}
+
+.task-item {
+  display: flex;                        /* عناصر المهمة بسطر */
+  align-items: center;                  /* توسيط عمودي */
+  gap: 12px;                            /* مسافة بينهم */
+  padding: 12px 16px;                   /* مسافة داخلية */
+  border-bottom: 1px solid #edf0f4;     /* خط فاصل */
+  transition: background 0.2s ease;     /* حركة ناعمة */
+}
+
+.task-item:last-child {
+  border-bottom: none;                  /* آخر مهمة بدون خط */
+}
+
+.task-item:hover {
+  background: var(--card-bg);           /* تظليل عند المرور */
+}
+
+.task-check {
+  flex-shrink: 0;                       /* ما بيصغر */
+  width: 18px;                          /* عرض */
+  height: 18px;                         /* ارتفاع */
+  accent-color: var(--secondary);       /* لون المربع لما يتعلّم (أزرق) */
+  cursor: pointer;                      /* شكل اليد */
+}
+
+.task-text {
+  flex: 1;                              /* النص ياخد المساحة الفاضية ويدفع الباقي للنهاية */
+  min-width: 0;                         /* بيسمح للنص بالالتفاف بدل ما يوسّع الصف */
+  overflow-wrap: anywhere;              /* بيكسر الكلمات الطويلة جداً */
+}
+
+.task-item.done .task-text {
+  text-decoration: line-through;        /* خط على النص للمهمة المكتملة */
+  color: var(--text-muted);             /* رمادي */
+}
+
+
+/* ========== الشارة (مكتملة / غير مكتملة) ========== */
+.badge {
+  flex-shrink: 0;                       /* ما بتصغر */
+  padding: 2px 10px;                    /* مسافة داخلية */
+  border-radius: 999px;                 /* شكل كبسولة */
+  font-size: 0.78rem;                   /* خط صغير */
+  font-weight: 700;                     /* عريض */
+  white-space: nowrap;                  /* ما تنكسر لسطرين */
+}
+
+.badge-danger {
+  background: #FDECEA;                  /* أحمر فاتح */
+  color: #C62828;                       /* أحمر غامق */
+}
+
+.badge-success {
+  background: #E8F5E9;                  /* أخضر فاتح */
+  color: #2E7D32;                       /* أخضر غامق */
+}
+
+
+/* ========== أزرار التعديل والحذف ========== */
+.task-actions {
+  display: flex;                        /* الزرين بسطر */
+  flex-shrink: 0;                       /* ما بيصغروا */
+}
+
+.task-icon-btn {
+  display: flex;                        /* لتوسيط الأيقونة */
+  align-items: center;                  /* توسيط عمودي */
+  justify-content: center;              /* توسيط أفقي */
+  width: 34px;                          /* عرض الزر */
+  height: 34px;                         /* ارتفاع الزر */
+  border: none;                         /* بدون إطار */
+  border-radius: 50%;                   /* دائري */
+  background: transparent;              /* بدون خلفية */
+  color: var(--text-muted);             /* رمادي */
+  cursor: pointer;                      /* شكل اليد */
+  transition: background 0.2s ease, color 0.2s ease; /* حركة ناعمة */
+}
+
+.task-icon-btn.is-edit:hover {
+  background: rgba(21, 101, 192, 0.12); /* خلفية زرقا خفيفة */
+  color: var(--secondary);              /* أيقونة زرقا */
+}
+
+.task-icon-btn.is-delete:hover {
+  background: rgba(244, 67, 54, 0.12);  /* خلفية حمرا خفيفة */
+  color: var(--danger);                 /* أيقونة حمرا */
+}
+
+.task-icon-btn:focus-visible,
+.filter-btn:focus-visible {
+  outline: 2px solid var(--secondary);  /* إطار واضح لما تتنقل بالكيبورد (Tab) */
+  outline-offset: 2px;                  /* مسافة بين الإطار والعنصر */
+}
+
+
+/* ========== رسالة القائمة الفارغة ========== */
+.task-empty {
+  padding: 30px 16px;                   /* مسافة داخلية */
+  text-align: center;                   /* توسيط */
+  color: var(--text-muted);             /* رمادي */
+}
+
+
+/* =====================================================
+   التجاوب (لازم بعد القواعد الأساسية فوق)
+   ===================================================== */
+
+@media (max-width: 480px) {
+  .badge {
+    display: none;                      /* على الجوال بنخفي الشارة لتوفير المكان (المربع والخط على النص كافيين) */
+  }
+
+  .task-item {
+    padding: 10px 12px;                 /* مسافة أصغر */
+    gap: 8px;                           /* مسافة أصغر بين العناصر */
+  }
+
+  .filter-btn {
+    flex: 1 1 28%;                      /* 3 أزرار فلترة بسطر واحد بعرض الشاشة */
+    padding: 8px 6px;                   /* مسافة أصغر */
+  }
+}

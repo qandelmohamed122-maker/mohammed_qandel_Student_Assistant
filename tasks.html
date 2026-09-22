@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المهام الدراسية - مساعد الطالب</title>
+
+  <!-- الخطوط -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- الأيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- الستايل: المشترك أول، وبعده ملف الصفحة -->
+  <link rel="stylesheet" href="./CSS/style.css">
+  <link rel="stylesheet" href="./CSS/tasks.css">
+</head>
+<body>
+
+  <!-- ===== الناف بار ===== -->
+  <nav class="navbar">
+    <div class="container nav-container">
+
+      <a href="index.html" class="logo">🎓 مساعد الطالب</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="القائمة" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="courses.html">المواد الدراسية</a></li>
+        <li><a href="schedule.html">الجدول الدراسي</a></li>
+        <li><a href="tasks.html" class="active">المهام</a></li>
+        <li><a href="gpa.html">حساب المعدل</a></li>
+        <li><a href="about.html">عن الموقع</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!-- ===== المحتوى ===== -->
+  <main>
+    <section class="page">
+      <div class="container tasks-wrap">
+
+        <header class="page-header">
+          <h1><i class="fa-solid fa-calendar-check"></i> المهام الدراسية</h1>
+          <p>أضف مهامك وتابع إنجازها</p>
+        </header>
+
+        <!-- إضافة مهمة: الحقل أول (يمين) والزر ثاني (يسار) -->
+        <form class="task-form" id="taskForm">
+          <input type="text" id="taskInput" placeholder="أدخل مهمة جديدة..." maxlength="100" aria-label="المهمة الجديدة" autocomplete="off">
+          <button type="submit" class="btn btn-primary">إضافة</button>
+        </form>
+
+        <!-- أزرار الفلترة -->
+        <div class="filters">
+          <button type="button" class="filter-btn active" data-filter="all">الكل</button>
+          <button type="button" class="filter-btn" data-filter="pending">غير مكتملة</button>
+          <button type="button" class="filter-btn" data-filter="done">مكتملة</button>
+        </div>
+
+        <!-- قائمة المهام (بتنبني بالجافاسكربت) -->
+        <div class="task-card">
+          <ul class="task-list" id="taskList"></ul>
+          <p class="task-empty" id="taskEmpty" hidden></p>
+        </div>
+
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== الفوتر ===== -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <p class="copyright">© 2026 مساعد الطالب - جميع الحقوق محفوظة</p>
+
+      <div class="social-links">
+     <a href="https://www.instagram.com/mohammed__qandel?stkn=MTZ2YTNodWpycTI4Mw==" aria-label="instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.facebook.com/me/" aria-label="facebook"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://x.com/Mohamed24745242" aria-label="X"><i class="fa-solid fa-x"></i></a>
+    <a href="https://wa.me/972567876970" aria-label="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./JS/script.js"></script>
+  <script src="./JS/tasks.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+/* ========== صفحة الجدول الدراسي ========== */
+.day-tabs {
+  display: flex;                        /* الأزرار بصف */
+  flex-wrap: wrap;                      /* لو ما اتسعوا ينزلوا لسطر جديد */
+  justify-content: center;              /* بنص الصفحة */
+  gap: 10px;                            /* مسافة بين الأزرار */
+  margin-bottom: 24px;                  /* مسافة قبل الجدول */
+}
+
+.day-btn {
+  padding: 8px 22px;                    /* مسافة داخلية */
+  border: 1px solid #d9dee5;            /* إطار رمادي فاتح */
+  border-radius: 8px;                   /* زوايا دائرية */
+  background: var(--white);             /* خلفية بيضا */
+  color: var(--navy);                   /* نص كحلي */
+  font-family: var(--font-body);        /* الأزرار ما بترث الخط تلقائياً */
+  font-size: 0.95rem;                   /* حجم الخط */
+  font-weight: 700;                     /* خط عريض */
+  cursor: pointer;                      /* شكل اليد */
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease; /* حركة ناعمة */
+}
+
+.day-btn:hover {
+  background: var(--bg-light);          /* أزرق فاتح عند المرور */
+}
+
+.day-btn.active {
+  background: var(--secondary);         /* اليوم المختار: خلفية زرقا */
+  border-color: var(--secondary);       /* إطار أزرق */
+  color: var(--white);                  /* نص أبيض */
+}
+
+.schedule-card {
+  padding: 20px;                        /* مسافة داخلية */
+  background: var(--white);             /* خلفية بيضا */
+  border: 1px solid #e3e8ef;            /* إطار خفيف */
+  border-radius: 12px;                  /* زوايا دائرية */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* ظل خفيف */
+}
+
+.schedule-title {
+  margin-bottom: 16px;                  /* مسافة تحت العنوان */
+  font-size: 1.15rem;                   /* حجم الخط */
+  text-align: center;                   /* توسيط */
+  color: var(--navy);                   /* كحلي */
+}
+
+.schedule-table {
+  width: 100%;                          /* الجدول بعرض الكرت */
+  border-collapse: collapse;            /* بنلغي الفراغ بين حدود الخلايا */
+}
+
+.schedule-table th,
+.schedule-table td {
+  padding: 12px 14px;                   /* مسافة داخل كل خلية */
+  text-align: start;                    /* بداية السطر (يمين بالـ RTL) */
+}
+
+.schedule-table th {
+  background: var(--bg-light);          /* خلفية زرقا فاتحة للعناوين */
+  color: var(--navy);                   /* كحلي */
+  font-family: var(--font-heading);     /* خط Cairo */
+  font-size: 0.95rem;                   /* حجم الخط */
+}
+
+.schedule-table td {
+  border-bottom: 1px solid #edf0f4;     /* خط فاصل تحت كل صف */
+  font-size: 0.95rem;                   /* حجم الخط */
+}
+
+.schedule-table tbody tr:last-child td {
+  border-bottom: none;                  /* آخر صف بدون خط */
+}
+
+.schedule-table tbody tr:hover {
+  background: var(--card-bg);           /* تظليل الصف عند المرور */
+}
+
+/* الوقت: بنجبره يظهر 09:00 - 10:30 بالترتيب الصح */
+.time {
+  display: inline-block;                /* عشان يطبّق الاتجاه على الوقت كله */
+  direction: ltr;                       /* اتجاه من اليسار لليمين */
+  unicode-bidi: isolate;                /* بيعزل الوقت عن اتجاه الصفحة */
+}
+
+.schedule-table td.schedule-empty {
+  padding: 30px 14px;                   /* مسافة أكبر لرسالة "لا توجد محاضرات" */
+  text-align: center;                   /* توسيط */
+  color: var(--text-muted);             /* رمادي */
+}
+
+
+@media (max-width: 600px) {
+  .schedule-table thead {
+    display: none;                      /* بنخفي صف العناوين (رح نحط العنوان جنب كل قيمة) */
+  }
+
+  .schedule-table,
+  .schedule-table tbody,
+  .schedule-table tr {
+    display: block;                     /* بنلغي سلوك الجدول: كل عنصر كتلة */
+    width: 100%;                        /* بعرض الكرت */
+  }
+
+  .schedule-table tr {
+    margin-bottom: 12px;                /* مسافة بين الصفوف */
+    padding: 6px 14px;                  /* مسافة داخلية */
+    border: 1px solid #e3e8ef;          /* إطار */
+    border-radius: 10px;                /* زوايا دائرية */
+  }
+
+  .schedule-table td {
+    display: flex;                      /* العنوان والقيمة بسطر واحد */
+    justify-content: space-between;     /* العنوان بطرف والقيمة بالطرف التاني */
+    padding: 8px 0;                     /* مسافة فوق وتحت */
+    border-bottom: 1px dashed #e3e8ef;  /* خط متقطع بين الأسطر */
+  }
+
+  .schedule-table td:last-child {
+    border-bottom: none;                /* آخر سطر بدون خط */
+  }
+
+  .schedule-table td::before {
+    content: attr(data-label);          /* بيكتب قيمة data-label قبل الخلية (المادة، الوقت...) */
+    font-weight: 700;                   /* خط عريض */
+    color: var(--navy);                 /* كحلي */
+  }
+
+  .schedule-table td.schedule-empty {
+    display: block;                     /* رسالة "لا توجد محاضرات" بدون عنوان */
+  }
+}
+
+@media (max-width: 480px) {
+  .day-btn {
+    flex: 1 1 28%;                      /* 3 أزرار بكل سطر على الجوال الصغير */
+    padding: 8px 6px;                   /* مسافة أصغر */
+  }
+}

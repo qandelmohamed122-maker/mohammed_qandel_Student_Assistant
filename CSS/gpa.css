@@ -1,0 +1,234 @@
+/* =====================================================
+   gpa.css — خاص بصفحة حساب المعدل (gpa.html) فقط
+   بيتحمّل بعد style.css
+   بيعتمد على ملف style.css المشترك: .container-narrow و .btn-icon
+   ===================================================== */
+
+
+/* ========== التلميح (لو ما في مواد) ========== */
+.gpa-hint {
+  margin-bottom: 16px;                  /* مسافة تحت التلميح */
+  padding: 12px 16px;                   /* مسافة داخلية */
+  border-radius: 8px;                   /* زوايا دائرية */
+  background: var(--bg-light);          /* أزرق فاتح */
+  color: var(--navy);                   /* كحلي */
+  font-size: 0.95rem;                   /* حجم الخط */
+}
+
+.gpa-hint a {
+  color: var(--secondary);              /* الرابط أزرق */
+  font-weight: 700;                     /* عريض */
+  text-decoration: underline;           /* خط تحته عشان يبين إنه رابط */
+}
+
+
+/* ========== كرت الجدول ========== */
+.gpa-card {
+  padding: 20px;                        /* مسافة داخلية */
+  background: var(--white);             /* خلفية بيضا */
+  border: 1px solid #e3e8ef;            /* إطار خفيف */
+  border-radius: 12px;                  /* زوايا دائرية */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* ظل خفيف */
+}
+
+.gpa-table {
+  width: 100%;                          /* الجدول بعرض الكرت */
+  border-collapse: collapse;            /* بنلغي الفراغ بين حدود الخلايا */
+}
+
+.gpa-table th {
+  padding: 10px 12px;                   /* مسافة داخلية */
+  background: var(--bg-light);          /* خلفية زرقا فاتحة للعناوين */
+  color: var(--navy);                   /* كحلي */
+  font-family: var(--font-heading);     /* خط Cairo */
+  font-size: 0.95rem;                   /* حجم الخط */
+  text-align: start;                    /* بداية السطر (يمين بالـ RTL) */
+}
+
+.gpa-table th:nth-child(2),
+.gpa-table th:nth-child(3) {
+  width: 130px;                         /* عمودي العلامة والساعات بعرض ثابت، والمادة ياخد الباقي */
+}
+
+.gpa-table td {
+  padding: 8px 6px;                     /* مسافة داخل الخلية */
+}
+
+.gpa-table td:last-child {
+  width: 48px;                          /* عمود زر الحذف ضيق */
+}
+
+.gpa-table input {
+  width: 100%;                          /* الحقل بعرض الخلية */
+  padding: 9px 12px;                    /* مسافة داخلية */
+  border: 1px solid #d0d7e2;            /* إطار رمادي */
+  border-radius: 8px;                   /* زوايا دائرية */
+  background: var(--white);             /* خلفية بيضا */
+  font-family: var(--font-body);        /* خط الموقع */
+  font-size: 1rem;                      /* 16px (يمنع الزوم على آيفون) */
+}
+
+.gpa-table input[type="number"] {
+  text-align: center;                   /* الأرقام بنص الحقل */
+}
+
+.gpa-table input:focus {
+  outline: none;                        /* بنشيل الإطار الافتراضي */
+  border-color: var(--secondary);       /* إطار أزرق */
+  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.15); /* هالة زرقا خفيفة */
+}
+
+
+/* ========== الأزرار ========== */
+.gpa-actions {
+  display: flex;                        /* الأزرار بسطر */
+  flex-wrap: wrap;                      /* تنزل لسطر جديد لو ما اتسعت */
+  gap: 10px;                            /* مسافة بينهم */
+  margin-top: 16px;                     /* مسافة فوق */
+}
+
+.btn-light {
+  background: var(--white);             /* زر أبيض */
+  border-color: #d0d7e2;                /* إطار رمادي */
+  color: var(--navy);                   /* نص كحلي */
+}
+
+.btn-light:hover {
+  background: var(--bg-light);          /* أزرق فاتح عند المرور */
+  transform: translateY(-2px);          /* يطلع 2px لفوق */
+}
+
+
+/* ========== رسالة الخطأ ========== */
+.gpa-message {
+  margin-top: 14px;                     /* مسافة فوق */
+  padding: 10px 14px;                   /* مسافة داخلية */
+  border-radius: 8px;                   /* زوايا دائرية */
+  background: #FDECEA;                  /* أحمر فاتح */
+  color: #C62828;                       /* أحمر غامق */
+  font-size: 0.95rem;                   /* حجم الخط */
+}
+
+
+/* ========== النتيجة ========== */
+.gpa-result {
+  margin-top: 20px;                     /* مسافة فوق */
+  padding: 22px 16px;                   /* مسافة داخلية */
+  border: 1px solid #C8E6C9;            /* إطار أخضر فاتح */
+  border-radius: 12px;                  /* زوايا دائرية */
+  background: #E8F5E9;                  /* خلفية خضرا فاتحة */
+  text-align: center;                   /* كل شي بالنص */
+}
+
+.gpa-result i {
+  font-size: 2rem;                      /* حجم الكأس */
+  color: var(--success);                /* أخضر */
+}
+
+.gpa-result-label {
+  font-weight: 700;                     /* عريض */
+  color: #2E7D32;                       /* أخضر غامق */
+}
+
+.gpa-result-value {
+  font-family: var(--font-heading);     /* خط Cairo */
+  font-size: 3rem;                      /* رقم كبير */
+  font-weight: 700;                     /* عريض */
+  line-height: 1.2;                     /* مسافة أضيق */
+  color: #2E7D32;                       /* أخضر غامق */
+}
+
+.gpa-result-note {
+  font-size: 0.9rem;                    /* خط أصغر */
+  color: var(--text-muted);             /* رمادي */
+}
+
+
+/* ========== سلم العلامات ========== */
+.scale-box {
+  margin-top: 20px;                     /* مسافة فوق */
+  border: 1px solid #e3e8ef;            /* إطار خفيف */
+  border-radius: 10px;                  /* زوايا دائرية */
+  background: var(--white);             /* خلفية بيضا */
+}
+
+.scale-box summary {
+  padding: 12px 16px;                   /* مسافة داخلية */
+  font-weight: 700;                     /* عريض */
+  color: var(--navy);                   /* كحلي */
+  cursor: pointer;                      /* شكل اليد */
+}
+
+.scale-box ul {
+  padding: 0 16px 12px;                 /* مسافة داخلية (بدون فوق لأن summary فوقها) */
+}
+
+.scale-box li {
+  display: flex;                        /* الوصف والقيمة بسطر */
+  justify-content: space-between;       /* واحد بطرف والثاني بالطرف الآخر */
+  padding: 6px 0;                       /* مسافة فوق وتحت */
+  border-bottom: 1px dashed #e3e8ef;    /* خط متقطع */
+  font-size: 0.92rem;                   /* حجم الخط */
+}
+
+.scale-box li:last-child {
+  border-bottom: none;                  /* آخر سطر بدون خط */
+}
+
+.scale-box li strong {
+  color: var(--secondary);              /* النقاط بالأزرق */
+}
+
+
+/* =====================================================
+   التجاوب (لازم بعد القواعد الأساسية فوق)
+   ===================================================== */
+
+/* ===== جوال: كل صف يصير كرت ===== */
+@media (max-width: 600px) {
+  .gpa-table thead {
+    display: none;                      /* بنخفي صف العناوين (العنوان رح يظهر جنب كل حقل) */
+  }
+
+  .gpa-table,
+  .gpa-table tbody,
+  .gpa-table tr {
+    display: block;                     /* بنلغي سلوك الجدول: كل عنصر كتلة */
+    width: 100%;                        /* بعرض الكرت */
+  }
+
+  .gpa-table tr {
+    margin-bottom: 12px;                /* مسافة بين الصفوف */
+    padding: 10px 12px;                 /* مسافة داخلية */
+    border: 1px solid #e3e8ef;          /* إطار */
+    border-radius: 10px;                /* زوايا دائرية */
+  }
+
+  .gpa-table td {
+    display: flex;                      /* العنوان والحقل بسطر واحد */
+    align-items: center;                /* توسيط عمودي */
+    justify-content: space-between;     /* العنوان بطرف والحقل بالطرف التاني */
+    gap: 12px;                          /* مسافة بينهم */
+    padding: 6px 0;                     /* مسافة فوق وتحت */
+  }
+
+  .gpa-table td::before {
+    content: attr(data-label);          /* بيكتب قيمة data-label قبل الحقل (المادة، العلامة...) */
+    flex-shrink: 0;                     /* العنوان ما بيصغر */
+    font-weight: 700;                   /* عريض */
+    color: var(--navy);                 /* كحلي */
+  }
+
+  .gpa-table td input {
+    width: 60%;                         /* الحقل ياخد 60% من عرض السطر */
+  }
+
+  .gpa-table td:last-child {
+    width: auto;                        /* بنلغي العرض الثابت تبع الديسكتوب */
+    justify-content: flex-end;          /* زر الحذف بنهاية السطر */
+  }
+
+  .gpa-actions .btn {
+    flex: 1 1 100%;                     /* الأزرار بعرض الشاشة (أسهل بالضغط) */
+  }
+}

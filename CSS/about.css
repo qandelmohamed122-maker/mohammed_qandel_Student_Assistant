@@ -1,0 +1,105 @@
+/* =====================================================
+   about.css — خاص بصفحة عن الموقع (about.html) فقط
+   بيتحمّل بعد style.css
+   بيعتمد على ملف style.css المشترك: .container-narrow
+   ===================================================== */
+
+
+/* ========== النبذة ========== */
+.about-intro {
+  max-width: 700px;                     /* عرض مريح للقراءة */
+  margin: 0 auto 30px;                  /* بنوسّطها + مسافة تحتها */
+  text-align: center;                   /* توسيط النص */
+  color: var(--text-muted);             /* رمادي */
+}
+
+
+/* ========== الشبكة: صورة + بطاقة ========== */
+.about-grid {
+  display: grid;                        /* نظام الشبكة */
+  grid-template-columns: 1fr 1fr;       /* عمودين متساويين */
+  gap: 24px;                            /* مسافة بينهم */
+  align-items: stretch;                 /* الصورة والبطاقة بنفس الارتفاع */
+}
+
+.about-image {
+  width: 100%;                          /* بعرض العمود */
+  height: 100%;                         /* بارتفاع الصف (نفس ارتفاع البطاقة) */
+  min-height: 260px;                    /* ما تصغر عن هيك */
+  object-fit: cover;                    /* الصورة تغطي المساحة بدون ما تتشوه */
+  border-radius: 12px;                  /* زوايا دائرية */
+  background: var(--bg-light);          /* لون احتياطي لو الصورة ما انحملت */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* ظل خفيف */
+}
+
+
+/* ========== بطاقة المعلومات ========== */
+.about-card {
+  display: flex;                        /* فليكس */
+  flex-direction: column;               /* المعلومات فوق والزر تحت */
+  gap: 22px;                            /* مسافة بينهم */
+  padding: 24px;                        /* مسافة داخلية */
+  background: var(--white);             /* خلفية بيضا */
+  border: 1px solid #e3e8ef;            /* إطار خفيف */
+  border-radius: 12px;                  /* زوايا دائرية */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* ظل خفيف */
+}
+
+.about-info {
+  display: flex;                        /* فليكس */
+  flex-direction: column;               /* السطور تحت بعض */
+  gap: 16px;                            /* مسافة بين السطور */
+}
+
+.about-info li {
+  display: flex;                        /* الأيقونة جنب النص */
+  align-items: center;                  /* توسيط عمودي */
+  gap: 14px;                            /* مسافة بينهم */
+}
+
+.info-icon {
+  flex-shrink: 0;                       /* ما تصغر الأيقونة */
+  display: flex;                        /* لتوسيط الأيقونة */
+  align-items: center;                  /* توسيط عمودي */
+  justify-content: center;              /* توسيط أفقي */
+  width: 42px;                          /* عرض المربع */
+  height: 42px;                         /* ارتفاع المربع */
+  border-radius: 10px;                  /* زوايا دائرية */
+  background: var(--bg-light);          /* أزرق فاتح */
+  color: var(--secondary);              /* أيقونة زرقا */
+  font-size: 1.1rem;                    /* حجم الأيقونة */
+}
+
+.info-label {
+  display: block;                       /* العنوان بسطر لحاله */
+  font-size: 0.85rem;                   /* خط صغير */
+  line-height: 1.3;                     /* مسافة أضيق */
+  color: var(--text-muted);             /* رمادي */
+}
+
+.info-value {
+  display: block;                       /* القيمة بسطر لحالها */
+  font-size: 1.05rem;                   /* حجم الخط */
+  color: var(--navy);                   /* كحلي */
+}
+
+.about-card .btn {
+  width: 100%;                          /* الزر بعرض البطاقة */
+  margin-top: auto;                     /* بيدفع الزر لآخر البطاقة */
+}
+
+
+/* =====================================================
+   التجاوب (لازم بعد القواعد الأساسية فوق)
+   ===================================================== */
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;         /* عمود واحد: الصورة فوق والبطاقة تحتها */
+  }
+
+  .about-image {
+    height: 220px;                      /* ارتفاع ثابت للصورة على الجوال */
+    min-height: 0;                      /* بنلغي الحد الأدنى */
+  }
+}

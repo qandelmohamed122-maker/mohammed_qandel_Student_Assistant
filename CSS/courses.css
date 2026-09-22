@@ -1,0 +1,129 @@
+/* =====================================================
+   courses.css — خاص بصفحة المواد الدراسية (courses.html) فقط
+   بيتحمّل بعد style.css
+   ===================================================== */
+
+
+/* ========== شبكة وكروت المواد ========== */
+.courses-grid {
+  display: grid;                        /* نظام الشبكة */
+  grid-template-columns: repeat(2, 1fr); /* عمودين متساويين */
+  gap: 20px;                            /* مسافة بين الكروت */
+}
+
+.course-card {
+  padding: 20px;                        /* مسافة داخلية */
+  background: var(--c-light);           /* اللون الفاتح الخاص بالكرت (من كلاس card-* بالملف المشترك) */
+  border: 1px solid rgba(0, 0, 0, 0.06); /* إطار خفيف جداً */
+  border-radius: 12px;                  /* زوايا دائرية */
+  transition: transform 0.25s ease, box-shadow 0.25s ease; /* حركة ناعمة */
+}
+
+.course-card:hover {
+  transform: translateY(-4px);          /* الكرت يطلع 4px */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* ظل عند المرور */
+}
+
+.course-top {
+  display: flex;                        /* الأيقونة جنب الاسم */
+  align-items: center;                  /* توسيط عمودي */
+  gap: 14px;                            /* مسافة بينهم */
+  margin-bottom: 14px;                  /* مسافة قبل التفاصيل */
+}
+
+.course-icon {
+  flex-shrink: 0;                       /* ما تصغر الأيقونة لو ضاق المكان */
+  font-size: 2.2rem;                    /* حجم الأيقونة (كبير) */
+  color: var(--c);                      /* اللون الغامق الخاص بالكرت */
+  line-height: 1;                       /* بنلغي ارتفاع السطر عشان ما تاخد مساحة زيادة */
+}
+
+.course-top h3 {
+  font-size: 1.15rem;                   /* حجم اسم المادة */
+  color: var(--navy);                   /* كحلي */
+  line-height: 1.3;                     /* مسافة أضيق بين السطور */
+}
+
+.course-desc {
+  font-size: 0.9rem;                    /* خط أصغر للوصف */
+  color: var(--text-muted);             /* رمادي */
+}
+
+.course-info {
+  display: flex;                        /* القائمة كـ فليكس */
+  flex-direction: column;               /* العناصر تحت بعض */
+  gap: 6px;                             /* مسافة بين الأسطر */
+  margin-bottom: 16px;                  /* مسافة قبل الزر */
+  font-size: 0.9rem;                    /* حجم الخط */
+}
+
+.course-info li {
+  display: flex;                        /* الأيقونة جنب النص */
+  align-items: center;                  /* توسيط عمودي */
+  gap: 8px;                             /* مسافة بين الأيقونة والنص */
+}
+
+.course-info i {
+  width: 16px;                          /* عرض ثابت عشان النصوص تصطف تحت بعض */
+  text-align: center;                   /* الأيقونة بنص العرض */
+  color: var(--text-muted);             /* رمادي */
+}
+
+
+/* ========== نافذة تفاصيل المادة (الأجزاء الخاصة بالمواد) ========== */
+/* الأساس (.modal و.modal-box و.modal-close) موجود بـ style.css */
+
+.modal-header {
+  display: flex;                        /* الأيقونة جنب الاسم */
+  align-items: center;                  /* توسيط عمودي */
+  gap: 14px;                            /* مسافة بينهم */
+  margin-bottom: 14px;                  /* مسافة تحتهم */
+}
+
+.modal-icon {
+  font-size: 2.2rem;                    /* حجم الأيقونة */
+  color: var(--c);                      /* لون المادة */
+  line-height: 1;                       /* بدون مسافة زايدة */
+}
+
+.modal-header h3 {
+  font-size: 1.25rem;                   /* حجم اسم المادة */
+  color: var(--navy);                   /* كحلي */
+  line-height: 1.3;                     /* مسافة أضيق */
+}
+
+.modal-about {
+  margin-bottom: 14px;                  /* مسافة تحت الشرح */
+  font-size: 0.95rem;                   /* حجم الخط */
+}
+
+.modal-box h4 {
+  margin: 16px 0 8px;                   /* مسافة فوق وتحت "أهم المواضيع" */
+  font-size: 1rem;                      /* حجم الخط */
+  color: var(--navy);                   /* كحلي */
+}
+
+.modal-topics {
+  display: flex;                        /* المواضيع جنب بعض */
+  flex-wrap: wrap;                      /* لو ما اتسعوا ينزلوا لسطر جديد */
+  gap: 8px;                             /* مسافة بينهم */
+}
+
+.modal-topics li {
+  padding: 4px 12px;                    /* مسافة داخلية */
+  border-radius: 999px;                 /* حبة كبسولة */
+  background: var(--c-light);           /* اللون الفاتح للمادة */
+  color: var(--navy);                   /* كحلي */
+  font-size: 0.85rem;                   /* خط صغير */
+}
+
+
+/* =====================================================
+   التجاوب (لازم بعد القواعد الأساسية فوق)
+   ===================================================== */
+
+@media (max-width: 768px) {
+  .courses-grid {
+    grid-template-columns: 1fr;         /* كرت واحد بكل سطر على الجوال */
+  }
+}
